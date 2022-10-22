@@ -7,6 +7,8 @@ import {
   Heading,
   Text,
   Container,
+  Center,
+  Flex,
 } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -51,8 +53,18 @@ export default function HomeSlider() {
       position={"relative"}
       height={"600px"}
       width={"full"}
-      overflow={"hidden"}
+      display={{ base: "none", md: "block" }}
     >
+      <Center>
+        <Box
+          backgroundColor="#FFD2BB"
+          borderRadius={"2xl"}
+          position="absolute"
+          width={"95%"}
+          height={"100%"}
+          top="2%"
+        ></Box>
+      </Center>
       {/* CSS files for react-slick */}
       <link
         rel="stylesheet"
@@ -84,7 +96,7 @@ export default function HomeSlider() {
 
       <Slider {...settings} ref={(slider: any) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Box
+          <Flex
             key={index}
             position="relative"
             bgRepeat={"no-repeat"}
@@ -96,14 +108,20 @@ export default function HomeSlider() {
             backgroundImage={`url(${card.image})`}
           >
             {/* This is the block you need to change, to customize the caption */}
-            <Container size="container.lg" height="600px" position="relative">
+            <Box
+              height="600px"
+              textAlign="left"
+              position="relative"
+              width={"100%"}
+              padding="20px"
+            >
               <Stack
                 spacing={6}
+                textAlign="left"
                 w={"full"}
                 maxW={"lg"}
                 position="absolute"
                 top="15%"
-                left={"-30%"}
                 transform="translate(0, -50%)"
               >
                 <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
@@ -113,8 +131,8 @@ export default function HomeSlider() {
                   {card.text}
                 </Text>
               </Stack>
-            </Container>
-          </Box>
+            </Box>
+          </Flex>
         ))}
       </Slider>
     </Box>

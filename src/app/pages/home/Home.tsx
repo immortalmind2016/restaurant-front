@@ -35,7 +35,11 @@ export const Home = (props: Props) => {
       <Box mt={"10px"}>
         <HomeSlider></HomeSlider>
       </Box>
-      <Box mt={"50px"} position={"relative"} width="fit-content">
+      <Box
+        margin={{ base: "50px auto", md: "50px 0" }}
+        position={"relative"}
+        width="fit-content"
+      >
         <Stack align="center" direction="row" position={"relative"}>
           {isMeal && (
             <Box
